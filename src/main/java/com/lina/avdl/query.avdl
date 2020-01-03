@@ -1,0 +1,8 @@
+@namespace("com.lina.query")
+protocol Example{
+  record QueryRecord {
+    string queryId;
+    @logicalType("reversed")
+    string queryAuthor;
+    }
+}

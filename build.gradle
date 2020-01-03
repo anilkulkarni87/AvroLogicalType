@@ -1,0 +1,60 @@
+import com.commercehub.gradle.plugin.avro.GenerateAvroProtocolTask
+import com.commercehub.gradle.plugin.avro.GenerateAvroSchemaTask
+import com.commercehub.gradle.plugin.avro.GenerateAvroJavaTask
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.commercehub.gradle.plugin:gradle-avro-plugin:0.17.0"
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/org.apache.avro/avro
+    compile group: 'org.apache.avro', name: 'avro', version: '1.9.1'
+    // https://mvnrepository.com/artifact/org.apache.avro/avro-compiler
+    compile group: 'org.apache.avro', name: 'avro-compiler', version: '1.9.1'
+
+}
+
+//task("generateProtocol", type: GenerateAvroProtocolTask) {
+//    source file("src/main/java/com/lina/avdl")
+//    include("**/*.avdl")
+//    outputDir = file("build/generated-main-avro-avpr")
+//}
+//
+//task("generateSchema", type: GenerateAvroSchemaTask) {
+//    dependsOn generateProtocol
+//    //source file("src/main/avro")
+//    source file("build/generated-main-avro-avpr")
+//    include("**/*.avpr")
+//    outputDir = file("build/generated-main-avro-avsc")
+//}
+//
+//task ("generateAvro", type: GenerateAvroJavaTask) {
+//    createSetters = true
+//    fieldVisibility = 'private'
+//    stringType = "CharSequence"
+//    enableDecimalLogicalType = true
+//    dateTimeLogicalType = 'JSR310'
+//    source("build/generated-main-avro-avsc")
+//    outputDir = file("src/main/java")
+//}
+//compileJava.source(generateAvro.outputs)
+
