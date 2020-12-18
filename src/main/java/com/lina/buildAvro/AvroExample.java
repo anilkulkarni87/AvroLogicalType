@@ -27,7 +27,7 @@ public class AvroExample {
         //LogicalTypes.register("reversed", new ReversedLogicalType.TypeFactory());
         QueryRecord queryRecord = QueryRecord.newBuilder()
                 .setQueryId("first")
-                .setQueryAuthor("Anil")
+                .setQueryAuthor("Anybody")
                 .build();
 
         final DatumWriter<QueryRecord> datumWriter = new SpecificDatumWriter<>(QueryRecord.class);
@@ -36,6 +36,7 @@ public class AvroExample {
             dataFileWriter.create(queryRecord.getSchema(), new File("query.avro"));
             dataFileWriter.append(queryRecord);
             System.out.println("successfully wrote query.avro");
+            System.out.println("*****************************");
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -46,6 +47,7 @@ public class AvroExample {
         final DataFileReader<QueryRecord> dataFileReader;
         try {
             System.out.println("Reading our specific record");
+            System.out.println("*****************************");
             dataFileReader = new DataFileReader<>(file, datumReader);
             while (dataFileReader.hasNext()) {
                 QueryRecord query = dataFileReader.next();
